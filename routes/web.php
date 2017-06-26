@@ -27,6 +27,6 @@ Route::get('/categories', function () {
 });
 
 Route::get('/products/{id}', function ($id) {
-    return response()->json(Product::find($id)->categories, 200);
+    return response()->json(Product::with('categories')->find($id), 200);
 });
 
