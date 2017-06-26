@@ -11,6 +11,9 @@
 |
 */
 
+
+use App\Product;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -22,3 +25,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/categories', function () {
     return response()->json(\App\Category::all(), 200);
 });
+
+Route::get('/products/{id}', function ($id) {
+    return response()->json(Product::find($id)->categories, 200);
+});
+
